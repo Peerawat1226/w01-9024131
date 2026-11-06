@@ -1,0 +1,174 @@
+{
+  "student": {
+    "name": "นายรักกี้ โรเมโอ",
+    "role": "นักศึกษา"
+  },
+  "audit_summary": {
+    "credits": {
+      "minimum_required": 124,
+      "registered": 118,
+      "passed": 96,
+      "pending": 19,
+      "audit_status": false
+    },
+    "study_years": {
+      "maximum_allowed": 16,
+      "years_studied": 4,
+      "current_year_level": 3,
+      "audit_status": true
+    },
+    "gpa": {
+      "minimum_gpax": 2.00,
+      "current_gpax": 3.67,
+      "major_gpa": 0.00,
+      "audit_status": true
+    },
+    "skills_test": {
+      "computer_skill_status": "FAIL",
+      "language_skill_status": "FAIL",
+      "audit_status": false
+    }
+  },
+  "curriculum_structure": [
+    {
+      "category_id": "1",
+      "category_name": "หมวดวิชาศึกษาทั่วไป",
+      "required_credits": 30,
+      "sub_categories": [
+        {
+          "sub_category_id": "1.1",
+          "sub_category_name": "กลุ่มวิชาภาษาและการสื่อสาร",
+          "required_credits": 9,
+          "courses": [
+            {
+              "course_group_id": "1.1.1",
+              "course_group_name": "กลุ่มวิชาภาษาอังกฤษ",
+              "credits": 6,
+              "ca": 6,
+              "cs": 6,
+              "cw": null,
+              "cg": 6,
+              "pt": 24,
+              "gpa": 4.00,
+              "status": true
+            },
+            {
+              "course_group_id": "1.1.2",
+              "course_group_name": "กลุ่มวิชาภาษาไทยและภาษาอื่น",
+              "credits": 3,
+              "ca": 3,
+              "cs": 3,
+              "cw": null,
+              "cg": 3,
+              "pt": 10.5,
+              "gpa": 3.50,
+              "status": true
+            }
+          ]
+        },
+        {
+          "sub_category_id": "1.2",
+          "sub_category_name": "กลุ่มวิชามนุษยศาสตร์และสังคมศาสตร์",
+          "required_credits": 12,
+          "courses": [
+            {
+              "course_group_id": "1.2.1",
+              "course_group_name": "กลุ่มวิชามนุษยศาสตร์",
+              "credits": 3,
+              "ca": 3,
+              "cs": 3,
+              "cw": null,
+              "cg": 3,
+              "pt": 12,
+              "gpa": 4.00,
+              "status": true
+            },
+            {
+              "course_group_id": "1.2.2",
+              "course_group_name": "กลุ่มวิชามนุษยศาสตร์",
+              "credits": 3,
+              "ca": 3,
+              "cs": 3,
+              "cw": null,
+              "cg": 3,
+              "pt": 9,
+              "gpa": 3.00,
+              "status": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "2",
+      "category_name": "หมวดวิชาเฉพาะ",
+      "required_credits": 88,
+      "sub_categories": [
+        {
+          "sub_category_id": "2.1",
+          "sub_category_name": "กลุ่มวิชาแกน",
+          "required_credits": 9,
+          "courses": [
+            {
+              "course_group_id": "2.1",
+              "course_group_name": "กลุ่มวิชาแกน",
+              "credits": 9,
+              "ca": 9,
+              "cs": 9,
+              "cw": null,
+              "cg": 9,
+              "pt": 31.5,
+              "gpa": 3.50,
+              "status": true
+            }
+          ]
+        },
+        {
+          "sub_category_id": "2.2",
+          "sub_category_name": "วิชาเฉพาะด้าน",
+          "required_credits": 53,
+          "courses": [
+            {
+              "course_group_id": "2.2.1",
+              "course_group_name": "กลุ่มประเด็นด้านองค์กรและระบบสารสนเทศ",
+              "credits": 9,
+              "ca": 6,
+              "cs": 6,
+              "cw": 3,
+              "cg": 6,
+              "pt": 24,
+              "gpa": 4.00,
+              "status": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "3",
+      "category_name": "หมวดวิชาเลือกเสรี",
+      "required_credits": 6,
+      "sub_categories": [
+        {
+          "sub_category_id": "3",
+          "sub_category_name": "หมวดวิชาเลือกเสรี",
+          "required_credits": 6,
+          "courses": [
+             {
+              "course_group_id": "3",
+              "course_group_name": "หมวดวิชาเลือกเสรี",
+              "credits": 6,
+              "ca": null,
+              "cs": null,
+              "cw": 6,
+              "cg": null,
+              "pt": null,
+              "gpa": null,
+              "status": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

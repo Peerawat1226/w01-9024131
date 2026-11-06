@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ระบบตรวจสอบจบการศึกษา</title>
+    <style>
+        body { font-family: 'Sarabun', sans-serif; background-color: #f4f6f9; padding: 20px; }
+        .summary-box { padding: 20px; margin-bottom: 20px; border-radius: 8px; color: white; }
+        .bg-red { background-color: #e74c3c; }
+        .bg-blue { background-color: #34495e; }
+        table { width: 100%; border-collapse: collapse; background: white; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #4a4a75; color: white; }
+        .status-pass { color: #2ecc71; font-weight: bold; }
+        .status-fail { color: #e74c3c; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h2 id="student-name">กำลังโหลดข้อมูล...</h2>
+
+    <!-- กล่องสรุปข้อมูล -->
+    <div class="summary-box bg-red">
+        <h3>หน่วยกิต</h3>
+        <p>หน่วยกิตขั้นต่ำ: <span id="min-credits"></span></p>
+        <p>หน่วยกิตที่ผ่าน: <span id="passed-credits"></span></p>
+    </div>
+
+    <!-- ตารางโครงสร้างหลักสูตร -->
+    <table>
+        <thead>
+            <tr>
+                <th>โครงสร้างหลักสูตร</th>
+                <th>หน่วยกิต</th>
+                <th>สถานะ</th>
+            </tr>
+        </thead>
+        <tbody id="course-table-body">
+            <!-- ข้อมูลจะถูกเติมด้วย JavaScript -->
+        </tbody>
+    </table>
+
+    <script>
+        // ดึงข้อมูลจากไฟล์ JSON
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                // 1. แสดงชื่อนักศึกษา
+                document.getElementById('student-name').innerText = `ข้อมูลของ: ${data.student.name} (${data.student.role})`;
+
+                // 2. แสดงข้อมูลสรุป
+                document.getElementById('min-credits').innerText = data.audit_summary.credits.minimum_required;
+                document.getElementById('passed-credits').innerText = data.audit_summary.credits.passed;
+
+                // 3. วนลูปแสดงโครงสร้างหลักสูตร
+                const tableBody = document.getElementById('course-table-body');
+                data.curriculum_structure.forEach(category => {
+                    // แถวหมวดวิชาหลัก
+                    tableBody.innerHTML += `
+                        <tr style="background-color: #f0f0f5; font-weight: bold;">
+                            <td>${category.category_id} ${category.category_name}</td>
+                            <td>${category.required_credits}</td>
+                            <td>-</td>
+                        </tr>
+                    `;
+
+                    // วนลูปกลุ่มวิชาย่อย
+                    category.sub_categories.forEach(sub => {
+                        sub.courses.forEach(course => {
+                            const statusIcon = course.status ? '<span class="status-pass">✔ ผ่าน</span>' : '<span class="status-fail">✘ ไม่ผ่าน</span>';
+                            tableBody.innerHTML += `
+                                <tr>
+                                    <td style="padding-left: 30px;">${course.course_group_id} ${course.course_group_name}</td>
+                                    <td>${course.credits}</td>
+                                    <td>${statusIcon}</td>
+                                </tr>
+                            `;
+                        });
+                    });
+                });
+            })
+            .catch(error => console.error('Error loading JSON:', error));
+    </script>
+</body>
+</html>
